@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.parent {
+  @apply flex flex-row align-middle h-16 w-max;
+
+  .logo {
+    @apply bg-[url('../../img/store.svg')] w-10 h-10 bg-no-repeat;
+  }
+
+  .nav {
+    @apply flex flex-row content-center h-full;
+  }
+}
