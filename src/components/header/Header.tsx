@@ -13,7 +13,10 @@ const Header : FC = () => {
           <p className={styles.navItem}>Женское</p>
           <p className={styles.navItem}>Аксесуары</p>
         </nav>
-
+        <div>
+          <button></button>
+          <button></button>
+        </div>
       </header>
     </>
   )

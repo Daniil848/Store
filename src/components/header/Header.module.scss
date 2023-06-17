@@ -3,13 +3,16 @@
 @tailwind utilities;
 
 .parent {
-  @apply flex flex-row align-middle h-16 w-max;
+  @apply flex flex-row items-center h-16 w-max;
 
   .logo {
-    @apply bg-[url('../../img/store.svg')] w-10 h-10 bg-no-repeat;
+    @apply bg-[url('../../img/store.svg')] flex items-center w-10 h-10 bg-no-repeat;
   }
 
   .nav {
     @apply flex flex-row content-center h-full;
+    .navItem {
+      @apply mx-3 flex items-center;
+    } 
   }
 }
