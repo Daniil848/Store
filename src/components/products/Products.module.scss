@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.products {
+  @apply grid grid-cols-4 gap-4 w-full justify-center justify-items-center;
+
+  .product {
+    @apply w-full max-w-sm p-4 bg-white border rounded-lg shadow duration-200;
+
+    .productImgContainer {
+      @apply bg-white rounded-t-lg hover:scale-105 duration-200;
+
+      .productImg {
+        @apply h-44 mx-auto;
+      }
+    }
+
+    .productInfo {
+      @apply flex flex-col pt-4;
+
+      .productInfoTitle {
+        @apply text-xl h-28 font-semibold tracking-tight text-gray-900;
+      }
+
+      .productInfoRating {
+        @apply bg-slate-100 text-slate-800 text-sm font-semibold w-min px-2.5 py-0.5 my-2 rounded;
+      }
+
+      .productInfoBy {
+        @apply flex items-center justify-between shrink-0;
+
+        .productInfoPrice {
+          @apply text-3xl font-bold text-gray-900;
+        }
+  
+        .productInfoLink {
+          @apply text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center;
+        }
+      }
+    }
+  }
+}
