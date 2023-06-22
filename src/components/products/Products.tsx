@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllProducts } from "../../app/storeSlice";
+import { getAllProducts , getSpecificCategory } from "../../app/storeSlice";
 import styles from "./Products.module.scss"
 
 const Products : FC = () => {
@@ -8,8 +8,13 @@ const Products : FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts());  
-  }, [dispatch]);
+    if (state.category === null) {
+      dispatch(getAllProducts()); 
+    } else if (state.category !== null) {
+      dispatch(getSpecificCategory(state.category))
+    };
+  }, [state.category,dispatch]);
+  
 
   return (
     <>

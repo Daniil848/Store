@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllCategories } from "../../app/storeSlice";
+import { getAllCategories,getCategory } from "../../app/storeSlice";
 import styles from "./SideBar.module.scss"
 
 const SideBar : FC = () => {
@@ -10,8 +10,6 @@ const SideBar : FC = () => {
   useEffect(() => {
     dispatch(getAllCategories());
   }, [dispatch])
-
-  console.log(state.categories);
   
 
   return (
@@ -20,8 +18,8 @@ const SideBar : FC = () => {
         <div className={styles.wrapper}>
           {state.categories.map((category, index) => (
             <ul className={styles.sideBarList} key={index}>
-              <li className={styles.sideBarListItem}>
-                {category}
+              <li>
+                <button className={styles.sideBarListItem} onClick={() => dispatch(getCategory({category}))}>{category}</button>
               </li>
             </ul>
           ))}

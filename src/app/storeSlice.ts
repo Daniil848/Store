@@ -17,6 +17,7 @@ export interface IProduct {
 export interface IState {
   products : IProduct[],
   categories : string[],
+  category : null | string,
   loading : boolean,
   error : null | string,
 };
@@ -24,6 +25,7 @@ export interface IState {
 const initialState : IState = {
   products : [],
   categories : [],
+  category : null,
   loading : false,
   error : null,
 };
@@ -36,7 +38,7 @@ export const getAllProducts = createAsyncThunk<IProduct[], undefined, {rejectVal
     if (!response.ok) {
       return rejectWithValue('Server error!');
     } 
-    console.log(response.json);
+
     return response.json();
   }
 );
@@ -49,17 +51,33 @@ export const getAllCategories = createAsyncThunk<string[], undefined, {rejectVal
     if (!response.ok) {
       return rejectWithValue('Server error!');
     } 
-    console.log(response.json);
+
+    return response.json();
+  }
+);
+
+export const getSpecificCategory = createAsyncThunk<IProduct[], string, {rejectValue: string}>(
+  "store/getSpecificCategory",
+  async (category : string, {rejectWithValue}) => {
+    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+
+    if (!response.ok) {
+      return rejectWithValue('Server error!');
+    } 
+    
     return response.json();
   }
 );
 
 
-
 export const storeSlice = createSlice({
   name : "store",
   initialState,
-  reducers : {},
+  reducers : {
+    getCategory(state, action) {
+      state.category = action.payload.category;
+    }
+  },
   extraReducers: (builder) => {
     builder
     .addCase(getAllProducts.pending, (state) => {
@@ -73,7 +91,12 @@ export const storeSlice = createSlice({
     .addCase(getAllCategories.fulfilled, (state, action) => {
       state.categories = action.payload;
     })
+    .addCase(getSpecificCategory.fulfilled, (state, action) => {
+      state.products = action.payload;
+    })
   }
 });
+
+export const {getCategory} = storeSlice.actions;
 
 export default storeSlice.reducer;
