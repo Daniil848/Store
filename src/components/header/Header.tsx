@@ -6,17 +6,15 @@ const Header : FC = () => {
   return (
     <>
       <header className={styles.parent}>
-        <div className={styles.logo}></div>
-        <nav className={styles.nav}>
-          <p className={styles.navItem}>Новинки</p>
-          <p className={styles.navItem}>Мужское</p>
-          <p className={styles.navItem}>Женское</p>
-          <p className={styles.navItem}>Аксесуары</p>
-        </nav>
         <div>
-          <button></button>
-          <button></button>
+          <div className={styles.logo}></div>
+
         </div>
+        
+        <nav className={styles.nav}>
+          <button></button>
+          <button></button>
+        </nav>
       </header>
     </>
   )

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .products {
-  @apply grid grid-cols-4 gap-4 min-w-min max-w-6xl mx-auto;
+  @apply grid grid-cols-4 gap-4 min-w-min max-w-6xl mx-auto mt-20;
 
   .product {
     @apply w-full max-w-sm p-4 bg-white border rounded-lg shadow;

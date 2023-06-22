@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 .parent {
-  @apply flex flex-row items-center h-16 w-max;
+  @apply flex fixed top-0 z-50 w-full p-2 bg-white border-b border-gray-200;
 
   .logo {
-    @apply bg-[url('../../img/store.svg')] flex items-center w-10 h-10 bg-no-repeat;
+    @apply bg-[url('../../img/bagpack.svg')] flex items-center w-10 h-10 bg-no-repeat;
   }
 
   .nav {

@@ -21,7 +21,7 @@ const SideBar : FC = () => {
           {state.categories.map((category, index) => (
             <ul className={styles.sideBarList} key={index}>
               <li className={styles.sideBarListItem}>
-                <input type="checkbox" className={styles.sideBarListItemCheckBox}></input>{category}
+                {category}
               </li>
             </ul>
           ))}

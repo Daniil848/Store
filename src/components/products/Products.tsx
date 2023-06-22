@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getAllProducts } from "../../app/storeSlice";
 import styles from "./Products.module.scss"
 
-const AllProducts : FC = () => {
+const Products : FC = () => {
   const state = useAppSelector(state => state.store)
   const dispatch = useAppDispatch();
 
@@ -31,11 +31,11 @@ const AllProducts : FC = () => {
                 <a href="" className={styles.productInfoLink}>Add to card</a>
               </div>
             </div>
-          </div>  
+          </div>
         ))}
       </div>
     </>
   );
 };
 
-export default AllProducts;
+export default Products;
