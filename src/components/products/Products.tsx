@@ -25,9 +25,9 @@ const AllProducts : FC = () => {
             <div className={styles.productInfo}>
               
               <p className={styles.productInfoTitle}>{product.title}</p>
-              {/* <p>{product.description}</p> */}
-              {/* <p className={styles.productInfoItem}>{product.category}</p> */}
-              <p className={styles.productInfoRating}>{product.rating.rate}\{product.rating.count}</p>
+              <p className={styles.productInfoRating}>
+                {product.rating.rate}<div className={styles.productInfoRatingImg}/>/{product.rating.count}
+              </p>
               <div className={styles.productInfoBy}>
                 <p className={styles.productInfoPrice}>${product.price}</p>
                 <a href="" className={styles.productInfoLink}>Add to card</a>
