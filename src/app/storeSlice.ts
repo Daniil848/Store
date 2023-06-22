@@ -16,12 +16,14 @@ export interface IProduct {
 
 export interface IState {
   products : IProduct[],
+  categories : string[],
   loading : boolean,
   error : null | string,
 };
 
 const initialState : IState = {
   products : [],
+  categories : [],
   loading : false,
   error : null,
 };
@@ -37,8 +39,22 @@ export const getAllProducts = createAsyncThunk<IProduct[], undefined, {rejectVal
     console.log(response.json);
     return response.json();
   }
-
 );
+
+export const getAllCategories = createAsyncThunk<string[], undefined, {rejectValue: string}>(
+  "store/getAllCategories",
+  async (_,{rejectWithValue}) => {
+    const response = await fetch('https://fakestoreapi.com/products/categories');
+
+    if (!response.ok) {
+      return rejectWithValue('Server error!');
+    } 
+    console.log(response.json);
+    return response.json();
+  }
+);
+
+
 
 export const storeSlice = createSlice({
   name : "store",
@@ -53,6 +69,9 @@ export const storeSlice = createSlice({
     .addCase(getAllProducts.fulfilled, (state, action) => {
       state.products = action.payload;
       state.loading = false;
+    })
+    .addCase(getAllCategories.fulfilled, (state, action) => {
+      state.categories = action.payload;
     })
   }
 });
