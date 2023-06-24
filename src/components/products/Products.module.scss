@@ -9,10 +9,14 @@
     @apply w-full max-w-sm p-4 bg-white border rounded-lg shadow;
 
     .productImgContainer {
-      @apply h-44 bg-white rounded-t-lg hover:scale-105 duration-300;
+      @apply relative h-44 bg-white rounded-t-lg hover:scale-105 duration-300;
 
       .productImg {
         @apply max-h-44 mx-auto bg-contain;
+      }
+
+      .productToggleModal {
+        @apply w-5 h-5 bg-[url('../../img/toggleModal.svg')] text-slate-300 absolute top-0 right-0;
       }
     }
 

@@ -1,7 +1,8 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getAllProducts , getSpecificCategory } from "../../app/storeSlice";
-import styles from "./Products.module.scss"
+import styles from "./Products.module.scss";
+import ProductModal from "./ProductModal";
 
 const Products : FC = () => {
   const state = useAppSelector(state => state.store)
@@ -22,6 +23,7 @@ const Products : FC = () => {
         {state.products.map((product, index) => (
           <div className={styles.product} key={index}>
             <div className={styles.productImgContainer}>
+              <button className={styles.productToggleModal}></button>
               <img src={product.image} alt="product-img" className={styles.productImg}/>
             </div>
             
@@ -39,6 +41,7 @@ const Products : FC = () => {
           </div>
         ))}
       </div>
+      <ProductModal/>
     </>
   );
 };

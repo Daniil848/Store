@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.modal {
+  @apply fixed m-auto top-0 bottom-0 left-0 right-0 z-50 w-96 h-64 p-4;
+
+  .modalSize {
+    @apply relative w-full max-w-2xl max-h-full;
+
+    .modalContent {
+      @apply relative bg-white rounded-lg shadow;
+    }
+  }
+}
