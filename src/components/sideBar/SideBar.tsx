@@ -16,6 +16,7 @@ const SideBar : FC = () => {
     <>
       <aside className={styles.sideBar}>
         <div className={styles.wrapper}>
+          <p className={styles.sideBarTitle}>Categoties:</p>
           {state.categories.map((category, index) => (
             <ul className={styles.sideBarList} key={index}>
               <li>
@@ -23,6 +24,10 @@ const SideBar : FC = () => {
               </li>
             </ul>
           ))}
+        </div>
+        <div className={styles.wrapper}>
+          <p className={styles.sideBarTitle}>Price:</p>
+          <input type="range" step="0.5"  className={styles.sideBarListRange}/>
         </div>
       </aside>
     </>

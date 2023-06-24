@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 .sideBar {
-  @apply fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0;
+  @apply fixed top-0 left-0 z-40 w-64 mt-14 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0;
   .wrapper {
-    @apply h-full px-3 py-4 mt-14 overflow-y-auto;
+    @apply px-3 py-4 overflow-y-auto;
+
+    .sideBarTitle {
+      @apply text-lg font-medium p-2;
+    }
 
     .sideBarList {
       @apply space-y-2 font-medium;
@@ -13,6 +17,10 @@
       .sideBarListItem {
         @apply flex items-center p-2 w-full text-gray-900 rounded-lg hover:bg-gray-100 focus:bg-gray-100 cursor-pointer;
       }
+    }
+
+    .sideBarListRange {
+      @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer;
     }
   }
 

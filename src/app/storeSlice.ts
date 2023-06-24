@@ -75,7 +75,11 @@ export const storeSlice = createSlice({
   initialState,
   reducers : {
     getCategory(state, action) {
-      state.category = action.payload.category;
+      if (state.category === null) {
+        state.category = action.payload.category;
+      } else {
+        state.category = null;
+      } 
     }
   },
   extraReducers: (builder) => {
