@@ -16,7 +16,7 @@
       }
 
       .productToggleModal {
-        @apply w-5 h-5 bg-[url('../../img/toggleModal.svg')] text-slate-300 absolute top-0 right-0;
+        @apply w-5 h-5 bg-[url('../../img/toggleModal.svg')] absolute top-0 right-0;
       }
     }
 
@@ -31,7 +31,7 @@
         @apply flex bg-slate-100 text-slate-800 text-base font-semibold w-min px-2.5 py-0.5 my-2 rounded;
 
         .productInfoRatingImg {
-          @apply bg-[url('../../img/star.svg')] w-5 h-5 mt-0.5;
+          @apply bg-[url('../../img/star.svg')] w-4 h-4 mt-1 ml-1;
         }
       }
 

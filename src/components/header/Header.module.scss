@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .parent {
-  @apply flex fixed top-0 z-50 w-full p-2 bg-white border-b border-gray-200;
+  @apply flex fixed top-0 z-30 w-full p-2 bg-white border-b border-gray-200;
 
   .logo {
     @apply bg-[url('../../img/bagpack.svg')] flex items-center w-10 h-10 bg-no-repeat;

@@ -49,7 +49,7 @@ const Products : FC = () => {
           </div>
         ))}
       </div>
-      {state.modal === true && state.product !== null && <ProductModal
+      {state.modal === true && <ProductModal
         id={product?.id || 0}
         title={product?.title || ""}
         price={product?.price || 0}
