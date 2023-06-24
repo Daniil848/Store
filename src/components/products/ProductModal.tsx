@@ -1,7 +1,8 @@
 import { FC } from "react";
-import styles from "./ProductModal.module.scss"
+import styles from "./ProductModal.module.scss";
+import { IProduct } from "../../app/storeSlice";
 
-const ProductModal : FC = () => {
+const ProductModal : FC<IProduct> = (props) => {
 
   return (
     <>

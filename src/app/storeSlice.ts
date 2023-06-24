@@ -16,16 +16,20 @@ export interface IProduct {
 
 export interface IState {
   products : IProduct[],
+  product : null | IProduct,
   categories : string[],
   category : null | string,
+  modal : boolean,
   loading : boolean,
   error : null | string,
 };
 
 const initialState : IState = {
   products : [],
+  product : null,
   categories : [],
   category : null,
+  modal : false,
   loading : false,
   error : null,
 };
@@ -42,6 +46,19 @@ export const getAllProducts = createAsyncThunk<IProduct[], undefined, {rejectVal
     return response.json();
   }
 );
+
+export const getSingleProduct = createAsyncThunk<IProduct, number, {rejectValue: string}>(
+  "store/getSingleProduct",
+  async (id : number,{rejectWithValue}) => {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+
+    if (!response.ok) {
+      return rejectWithValue('Server error!');
+    } 
+
+    return response.json();
+  }
+)
 
 export const getAllCategories = createAsyncThunk<string[], undefined, {rejectValue: string}>(
   "store/getAllCategories",
@@ -80,6 +97,9 @@ export const storeSlice = createSlice({
       } else {
         state.category = null;
       } 
+    },
+    toggleModal(state) {
+      state.modal = !state.modal;
     }
   },
   extraReducers: (builder) => {
@@ -98,9 +118,12 @@ export const storeSlice = createSlice({
     .addCase(getSpecificCategory.fulfilled, (state, action) => {
       state.products = action.payload;
     })
+    .addCase(getSingleProduct.fulfilled, (state, action) => {
+      state.product = action.payload;
+    })
   }
 });
 
-export const {getCategory} = storeSlice.actions;
+export const {getCategory, toggleModal} = storeSlice.actions;
 
 export default storeSlice.reducer;
