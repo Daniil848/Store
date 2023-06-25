@@ -1,28 +1,23 @@
 import { FC } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch } from "../../app/hooks";
 import { toggleModal } from "../../app/storeSlice";
 import { IProduct } from "../../app/storeSlice";
 import styles from "./ProductModal.module.scss";
 
 const ProductModal : FC<IProduct> = (props) => {
-  const state = useAppSelector(state => state.store)
   const dispatch = useAppDispatch();
 
   return (
     <>
-    <div className={styles.wrapper}>
-      <div className={styles.modal}>
-        <div className={styles.modalBox}>
-          <div className={styles.modalContent}>
-            <div className={styles.modalHeader}>
-              <h2 className={styles.modalHeaderTitle}>{props.title}</h2>
-              <button className={styles.modalHeaderClose} onClick={() => dispatch(toggleModal())}></button>
-            </div>
+      <div className={styles.wrapper}>
+        <div className={styles.modal}>
+            <button className={styles.modalClose} onClick={() => dispatch(toggleModal())}></button>
             <div className={styles.modalBody}>
               <div className={styles.modalBodyImgContainer}>
                 <img src={props.image} alt="productImg"  className={styles.modalBodyImg}/>
               </div>
               <div className={styles.modalBodyContent}>
+                <h2 className={styles.modalBodyContentTitle}>{props.title}</h2>
                 <p className={styles.modalBodyContentDescription}>{props.description}</p>
                 <div className={styles.modalBodyContentRating}>
                   <div className={styles.modalBodyContentImg}></div>
@@ -37,10 +32,8 @@ const ProductModal : FC<IProduct> = (props) => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </div>
-    </div>
+      </div>
     </>
   )
 };

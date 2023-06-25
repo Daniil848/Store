@@ -58,7 +58,7 @@ export const getSingleProduct = createAsyncThunk<IProduct, number, {rejectValue:
 
     return response.json();
   }
-)
+);
 
 export const getAllCategories = createAsyncThunk<string[], undefined, {rejectValue: string}>(
   "store/getAllCategories",
@@ -117,6 +117,9 @@ export const storeSlice = createSlice({
     })
     .addCase(getSpecificCategory.fulfilled, (state, action) => {
       state.products = action.payload;
+    })
+    .addCase(getSingleProduct.pending, (state) => {
+      state.loading = true;
     })
     .addCase(getSingleProduct.fulfilled, (state, action) => {
       state.product = action.payload;
