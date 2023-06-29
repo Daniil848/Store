@@ -30,8 +30,8 @@ const Products : FC = () => {
       <div className={styles.products}>
         {state.products.map((item, index) => (
           <div className={styles.product} key={index}>
+            <button className={styles.productToggleModal} onClick={() => handleModal(item.id)}></button>
             <div className={styles.productImgContainer}>
-              <button className={styles.productToggleModal} onClick={() => handleModal(item.id)}></button>
               <img src={item.image} alt="product-img" className={styles.productImg}/>
             </div>
             

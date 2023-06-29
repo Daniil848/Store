@@ -123,6 +123,7 @@ export const storeSlice = createSlice({
     })
     .addCase(getSingleProduct.fulfilled, (state, action) => {
       state.product = action.payload;
+      state.loading = false;
     })
   }
 });

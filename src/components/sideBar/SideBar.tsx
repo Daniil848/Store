@@ -25,10 +25,10 @@ const SideBar : FC = () => {
             </ul>
           ))}
         </div>
-        <div className={styles.wrapper}>
+        {/* <div className={styles.wrapper}>
           <p className={styles.sideBarTitle}>Price:</p>
           <input type="range" step="0.5"  className={styles.sideBarListRange}/>
-        </div>
+        </div> */}
       </aside>
     </>
   );
