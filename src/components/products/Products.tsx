@@ -1,8 +1,11 @@
+import React from "react";
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllProducts, getSingleProduct, getSpecificCategory,toggleModal} from "../../app/storeSlice";
-import styles from "./Products.module.scss";
+import { getAllProducts, getSpecificCategory, toggleModal, getProductId} from "../../app/storeSlice";
+import { Link } from 'react-router-dom';
 import ProductModal from "./ProductModal";
+import SideBar from "../sideBar/SideBar";
+import styles from "./Products.module.scss";
 
 const Products : FC = () => {
   const state = useAppSelector(state => state.store)
@@ -16,48 +19,42 @@ const Products : FC = () => {
     };
   }, [state.category,dispatch]);
 
-  const handleModal = (id : number) => {
-    dispatch(getSingleProduct(id));
-    dispatch(toggleModal());
-  };
-
-  const product = state.product || null;
-
-  console.log(state.product); 
-
   return (
     <>
       <div className={styles.products}>
         {state.products.map((item, index) => (
-          <div className={styles.product} key={index}>
-            <button className={styles.productToggleModal} onClick={() => handleModal(item.id)}></button>
+          <Link
+            to={`/product/${item.id}`}
+            className={styles.product}
+            key={index}
+            onClick={() => {dispatch(getProductId(item.id))}}
+          >
+            <button
+              className={styles.productToggleModal} 
+              onClick={(event) => {event.preventDefault(); dispatch(getProductId(item.id)); dispatch(toggleModal())}}
+            />
             <div className={styles.productImgContainer}>
               <img src={item.image} alt="product-img" className={styles.productImg}/>
             </div>
-            
             <div className={styles.productInfo}>
-              
               <p className={styles.productInfoTitle}>{item.title}</p>
               <p className={styles.productInfoRating}>
                 {item.rating.rate}<div className={styles.productInfoRatingImg}/>
               </p>
               <div className={styles.productInfoBy}>
                 <p className={styles.productInfoPrice}>${item.price}</p>
-                <button className={styles.productInfoLink}>Add to card</button>
+                <button 
+                  className={styles.productInfoLink} 
+                  onClick={(event) => event.preventDefault()}
+                >Add to card</button>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
-      {state.modal === true && <ProductModal
-        id={product?.id || 0}
-        title={product?.title || ""}
-        price={product?.price || 0}
-        description={product?.description || ""}
-        image={product?.image || ""}
-        category={product?.category || ""}
-        rating={{ rate: product?.rating.rate || 0, count: product?.rating.count || 0}}
+      {state.modal === true && <ProductModal id={state?.productId || 0}
       />}
+      <SideBar/>
     </>
   );
 };

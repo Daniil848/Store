@@ -17,6 +17,7 @@ export interface IProduct {
 export interface IState {
   products : IProduct[],
   product : null | IProduct,
+  productId : number | null,
   categories : string[],
   category : null | string,
   modal : boolean,
@@ -27,6 +28,7 @@ export interface IState {
 const initialState : IState = {
   products : [],
   product : null,
+  productId : null,
   categories : [],
   category : null,
   modal : false,
@@ -47,9 +49,9 @@ export const getAllProducts = createAsyncThunk<IProduct[], undefined, {rejectVal
   }
 );
 
-export const getSingleProduct = createAsyncThunk<IProduct, number, {rejectValue: string}>(
+export const getSingleProduct = createAsyncThunk<IProduct, number | string, {rejectValue: string}>(
   "store/getSingleProduct",
-  async (id : number,{rejectWithValue}) => {
+  async (id : number | string,{rejectWithValue}) => {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`);
 
     if (!response.ok) {
@@ -100,7 +102,10 @@ export const storeSlice = createSlice({
     },
     toggleModal(state) {
       state.modal = !state.modal;
-    }
+    },
+    getProductId(state, action) {
+      state.productId = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -128,6 +133,6 @@ export const storeSlice = createSlice({
   }
 });
 
-export const {getCategory, toggleModal} = storeSlice.actions;
+export const {getCategory, toggleModal, getProductId} = storeSlice.actions;
 
 export default storeSlice.reducer;

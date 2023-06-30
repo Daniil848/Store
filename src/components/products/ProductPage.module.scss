@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product {
+  @apply max-w-6xl mx-auto bg-white bg-opacity-80 rounded-lg shadow mt-20 p-4;
+
+  .productImgContainer {
+    @apply h-auto w-1/2 bg-white rounded-md p-4;
+
+    .productImg {
+      @apply max-h-96 mx-auto bg-contain;
+    }
+  }
+}
