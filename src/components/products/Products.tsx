@@ -43,7 +43,7 @@ const Products : FC = () => {
               </p>
               <div className={styles.productInfoBy}>
                 <p className={styles.productInfoPrice}>${item.price}</p>
-                <a href="#" className={styles.productInfoLink}>Add to card</a>
+                <button className={styles.productInfoLink}>Add to card</button>
               </div>
             </div>
           </div>

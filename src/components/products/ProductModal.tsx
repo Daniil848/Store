@@ -12,31 +12,29 @@ const ProductModal : FC<IProduct> = (props) => {
     <>
       <div className={styles.wrapper}>
         {state.loading === false &&
-          <>
-            <div className={styles.modal}>
-              <button className={styles.modalClose} onClick={() => dispatch(toggleModal())}></button>
-              <div className={styles.modalBody}>
-                <div className={styles.modalBodyImgContainer}>
-                  <img src={props.image} alt="productImg"  className={styles.modalBodyImg}/>
+          <div className={styles.modal}>
+            <button className={styles.modalClose} onClick={() => dispatch(toggleModal())}></button>
+            <div className={styles.modalBody}>
+              <div className={styles.modalBodyImgContainer}>
+                <img src={props.image} alt="productImg"  className={styles.modalBodyImg}/>
+              </div>
+              <div className={styles.modalBodyContent}>
+                <h2 className={styles.modalBodyContentTitle}>{props.title}</h2>
+                <p className={styles.modalBodyContentDescription}>{props.description}</p>
+                <div className={styles.modalBodyContentRating}>
+                  <div className={styles.modalBodyContentImg}></div>
+                  <p className={styles.modalBodyContentRatingRate}>{props.rating.rate}</p>
+                  <span className={styles.modalBodyContentRatingMarker}></span>
+                  <p className={styles.modalBodyContentRatingCount}>{props.rating.count} reviews</p>
                 </div>
-                <div className={styles.modalBodyContent}>
-                  <h2 className={styles.modalBodyContentTitle}>{props.title}</h2>
-                  <p className={styles.modalBodyContentDescription}>{props.description}</p>
-                  <div className={styles.modalBodyContentRating}>
-                    <div className={styles.modalBodyContentImg}></div>
-                    <p className={styles.modalBodyContentRatingRate}>{props.rating.rate}</p>
-                    <span className={styles.modalBodyContentRatingMarker}></span>
-                    <p className={styles.modalBodyContentRatingCount}>{props.rating.count} reviews</p>
-                  </div>
-                  <p className={styles.modalBodyContentPrice}>${props.price}</p>
-                  <div className={styles.modalBodyContentButtons}>
-                    <button className={styles.button}>Go to the page</button>
-                    <button className={styles.button}>Add to card</button>
-                  </div>
+                <p className={styles.modalBodyContentPrice}>${props.price}</p>
+                <div className={styles.modalBodyContentButtons}>
+                  <button className={styles.button}>Go to the page</button>
+                  <button className={styles.button}>Add to card</button>
                 </div>
               </div>
             </div>
-          </>
+          </div>
         }
       </div>
     </>

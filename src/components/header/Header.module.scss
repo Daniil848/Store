@@ -2,17 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-.parent {
-  @apply flex fixed top-0 z-30 w-full p-2 bg-white border-b border-gray-200;
+.header {
+  @apply fixed top-0 z-30 w-full bg-white border-b border-gray-200;
 
-  .logo {
-    @apply bg-[url('../../img/bagpack.svg')] flex items-center w-10 h-10 bg-no-repeat;
-  }
+  .wrapper {
+    @apply relative flex max-w-6xl w-full h-full mx-auto my-2;
 
-  .nav {
-    @apply flex flex-row content-center h-full;
-    .navItem {
-      @apply mx-3 flex items-center;
-    } 
+    .headerLogo {
+      @apply bg-[url('../../img/bagpack.svg')] flex items-center w-10 h-10 bg-no-repeat;
+    }
+
+    .headerSearch {
+      @apply flex h-8 my-auto rounded-md shadow-sm;
+
+      .headerSearchInput {
+        @apply py-1 px-2 h-8 bg-blue-200 focus:outline-none shadow-sm rounded-l-md text-sm;
+      }
+      .headerSearchButton {
+        @apply flex justify-center items-center bg-[url('../../img/search.svg')] fill-white h-8 w-8 rounded-r-md border border-transparent font-semibold bg-blue-700 hover:bg-blue-600 outline-none focus:ring-2 focus:ring-blue-500 transition-all;
+      }
+    }
+
+    .headerProfile {
+      @apply flex h-full;
+
+      .headerProfileBasket {
+        @apply w-8 h-8 fill-black bg-[url('../../img/basket.svg')] z-30;
+      }
+      .headerProfileUser {
+
+      }
+    }
   }
 }

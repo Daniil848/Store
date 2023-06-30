@@ -5,16 +5,20 @@ const Header : FC = () => {
 
   return (
     <>
-      <header className={styles.parent}>
-        <div>
-          <div className={styles.logo}></div>
-
+      <header className={styles.header}>
+        <div className={styles.wrapper}>
+          <div>
+            <div className={styles.headerLogo}></div>
+          </div>
+          <form action="" className={styles.headerSearch}>
+            <input type="search" className={styles.headerSearchInput}/>
+            <button className={styles.headerSearchButton}></button>
+          </form>
+          <div className={styles.headerProfile}>
+            <button className={styles.headerProfileBasket}></button>
+            <button className={styles.headerProfileUser}></button>
+          </div>
         </div>
-        
-        <nav className={styles.nav}>
-          <button></button>
-          <button></button>
-        </nav>
       </header>
     </>
   )
