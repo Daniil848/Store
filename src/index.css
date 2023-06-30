@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('./img/stacked-waves-haikei.svg') no-repeat;
+  background: url('./img/main-background.svg') no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
