@@ -9,7 +9,7 @@
     @apply fixed m-auto top-0 bottom-0 left-0 right-0 max-w-3xl h-fit p-4 box-border bg-white rounded-lg shadow-xl animate-swing;
   
     .modalClose {
-      @apply absolute right-3 top-3 w-5 h-5 bg-[url('../../img/close.svg')] bg-no-repeat bg-contain;
+      @apply absolute right-3 top-3 w-5 h-5 text-xl text-slate-600;
     }
 
     .modalBody {
@@ -35,10 +35,10 @@
         }
 
         .modalBodyContentRating {
-          @apply flex items-center;
+          @apply flex items-center h-5;
 
-          .modalBodyContentImg {
-            @apply bg-[url('../../img/star.svg')] w-4 h-4;
+          .modalBodyContentRatingImg {
+            @apply text-yellow-500;
           }
 
           .modalBodyContentRatingRate {

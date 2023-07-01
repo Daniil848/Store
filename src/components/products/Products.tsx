@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import ProductModal from "./ProductModal";
 import SideBar from "../sideBar/SideBar";
 import styles from "./Products.module.scss";
+import { faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Products : FC = () => {
   const state = useAppSelector(state => state.store)
@@ -32,14 +34,15 @@ const Products : FC = () => {
             <button
               className={styles.productToggleModal} 
               onClick={(event) => {event.preventDefault(); dispatch(getProductId(item.id)); dispatch(toggleModal())}}
-            />
+            ><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
             <div className={styles.productImgContainer}>
               <img src={item.image} alt="product-img" className={styles.productImg}/>
             </div>
             <div className={styles.productInfo}>
               <p className={styles.productInfoTitle}>{item.title}</p>
               <p className={styles.productInfoRating}>
-                {item.rating.rate}<div className={styles.productInfoRatingImg}/>
+                <span className={styles.productInfoRatingRate}>{item.rating.rate}</span>
+                <span className={styles.productInfoRatingImg}><FontAwesomeIcon icon={faStar}/></span>
               </p>
               <div className={styles.productInfoBy}>
                 <p className={styles.productInfoPrice}>${item.price}</p>
@@ -52,8 +55,7 @@ const Products : FC = () => {
           </Link>
         ))}
       </div>
-      {state.modal === true && <ProductModal id={state?.productId || 0}
-      />}
+      {state.modal === true && <ProductModal id={state?.productId || 0}/>}
       <SideBar/>
     </>
   );

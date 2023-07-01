@@ -9,7 +9,7 @@
     @apply relative w-full max-w-sm p-4 bg-white bg-opacity-80 rounded-lg shadow;
 
     .productToggleModal {
-      @apply absolute z-10 top-5 right-5 w-5 h-5 bg-[url('../../img/search.svg')];
+      @apply absolute z-10 top-5 right-5 w-5 h-5 text-slate-600;
     }
 
     .productImgContainer {
@@ -28,10 +28,14 @@
       }
 
       .productInfoRating {
-        @apply flex bg-slate-100 text-slate-800 text-base font-semibold w-min px-2.5 py-0.5 my-2 rounded;
+        @apply flex bg-slate-100 w-min px-2.5 py-0.5 my-2 rounded;
+
+        .productInfoRatingRate {
+          @apply  text-slate-800 text-base font-semibold;
+        }
 
         .productInfoRatingImg {
-          @apply bg-[url('../../img/star.svg')] w-4 h-4 mt-1 ml-1;
+          @apply w-4 h-4 ml-1 text-yellow-500;
         }
       }
 
