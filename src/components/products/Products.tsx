@@ -1,13 +1,12 @@
 import React from "react";
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllProducts, getSpecificCategory, toggleModal, getProductId} from "../../app/storeSlice";
-import { Link } from 'react-router-dom';
+import { getAllProducts, getSpecificCategory } from "../../app/storeSlice";
+import Product from "./Product";
 import ProductModal from "./ProductModal";
 import SideBar from "../sideBar/SideBar";
 import styles from "./Products.module.scss";
-import { faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 const Products : FC = () => {
   const state = useAppSelector(state => state.store)
@@ -25,31 +24,16 @@ const Products : FC = () => {
     <>
       <div className={styles.products}>
         {state.products.map((item, index) => (
-          <Link
-            to={`/product/${item.id}`}
-            className={styles.product}
+          <Product
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            price={item.price}
+            category={item.category}
+            image={item.image}
+            rating={{rate: item.rating.rate, count: item.rating.count}}
             key={index}
-            onClick={() => {dispatch(getProductId(item.id))}}
-          >
-            <button
-              className={styles.productToggleModal} 
-              onClick={(event) => {event.preventDefault(); dispatch(getProductId(item.id)); dispatch(toggleModal())}}
-            ><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
-            <div className={styles.productImgContainer}>
-              <img src={item.image} alt="product-img" className={styles.productImg}/>
-            </div>
-            <div className={styles.productInfo}>
-              <p className={styles.productInfoTitle}>{item.title}</p>
-              
-              <div className={styles.productInfoBy}>
-                <p className={styles.productInfoPrice}>${item.price}</p>
-                <p className={styles.productInfoRating}>
-                  <span className={styles.productInfoRatingRate}>{item.rating.rate}</span>
-                  <span className={styles.productInfoRatingImg}><FontAwesomeIcon icon={faStar}/></span>
-                </p>
-              </div>
-            </div>
-          </Link>
+          />
         ))}
       </div>
       {state.modal === true && <ProductModal id={state?.productId || 0}/>}
