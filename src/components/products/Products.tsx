@@ -40,16 +40,13 @@ const Products : FC = () => {
             </div>
             <div className={styles.productInfo}>
               <p className={styles.productInfoTitle}>{item.title}</p>
-              <p className={styles.productInfoRating}>
-                <span className={styles.productInfoRatingRate}>{item.rating.rate}</span>
-                <span className={styles.productInfoRatingImg}><FontAwesomeIcon icon={faStar}/></span>
-              </p>
+              
               <div className={styles.productInfoBy}>
                 <p className={styles.productInfoPrice}>${item.price}</p>
-                <button 
-                  className={styles.productInfoLink} 
-                  onClick={(event) => event.preventDefault()}
-                >Add to card</button>
+                <p className={styles.productInfoRating}>
+                  <span className={styles.productInfoRatingRate}>{item.rating.rate}</span>
+                  <span className={styles.productInfoRatingImg}><FontAwesomeIcon icon={faStar}/></span>
+                </p>
               </div>
             </div>
           </Link>

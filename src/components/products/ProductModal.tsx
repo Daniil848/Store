@@ -4,6 +4,7 @@ import { getSingleProduct, toggleModal } from "../../app/storeSlice";
 import styles from "./ProductModal.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 interface IProps {
   id : number,
@@ -39,7 +40,7 @@ const ProductModal : FC<IProps> = (props) => {
               </div>
               <p className={styles.modalBodyContentPrice}>${state.product.price}</p>
               <div className={styles.modalBodyContentButtons}>
-                <button className={styles.button}>Go to the page</button>
+                <Link to={`/product/${props.id}`} className={styles.button} onClick={() => dispatch(toggleModal())}>Go to the page</Link>
                 <button className={styles.button}>Add to card</button>
               </div>
             </div>
