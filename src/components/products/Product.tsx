@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch } from "../../app/hooks";
 import { toggleModal, getProductId} from "../../app/storeSlice";
 import { IProduct } from "../../app/storeSlice";
 import { Link } from 'react-router-dom';
@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Product.module.scss";
 
 const Product : FC<IProduct> = (props) => {
-  const state = useAppSelector(state => state.store)
   const dispatch = useAppDispatch();
 
   return (

@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useParams } from 'react-router-dom';
 import { getSingleProduct } from "../../app/storeSlice";
+import RecentlyViewedProducts from "./RecentlyViewedProducts";
 import styles from "./ProductPage.module.scss";
 
 interface IProps {
@@ -14,8 +15,9 @@ const ProductPage : FC<IProps> = (props) => {
   const {productID} = useParams();
   
   useEffect(() => {
-    if (typeof productID === "string")
-    dispatch(getSingleProduct(productID));
+    if (typeof productID === "string") {
+      dispatch(getSingleProduct(productID));
+    }
   },[dispatch, productID]);
 
   return (
@@ -39,6 +41,7 @@ const ProductPage : FC<IProps> = (props) => {
           <p className={styles.productDescription}>{state.product?.description}</p>
         </div>
       </div>}
+      <RecentlyViewedProducts id={state.product?.id || 0}/>
     </>
   );
 };

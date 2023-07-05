@@ -20,6 +20,7 @@ export interface IState {
   productId : number | null,
   categories : string[],
   category : null | string,
+  viewedProducts : IProduct[],
   modal : boolean,
   loading : boolean,
   error : null | string,
@@ -31,6 +32,7 @@ const initialState : IState = {
   productId : null,
   categories : [],
   category : null,
+  viewedProducts : [],
   modal : false,
   loading : false,
   error : null,
@@ -106,6 +108,15 @@ export const storeSlice = createSlice({
     getProductId(state, action) {
       state.productId = action.payload;
     },
+    recentlyViewed(state, action) {
+      const existingProductIndex = state.viewedProducts.findIndex((product) => product.id === action.payload.id);
+      
+      if (existingProductIndex !== -1) {
+        state.viewedProducts.splice(existingProductIndex, 1);
+      }
+      
+      state.viewedProducts.unshift(action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -133,6 +144,6 @@ export const storeSlice = createSlice({
   }
 });
 
-export const {getCategory, toggleModal, getProductId} = storeSlice.actions;
+export const {getCategory, toggleModal, getProductId, recentlyViewed} = storeSlice.actions;
 
 export default storeSlice.reducer;
