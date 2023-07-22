@@ -41,7 +41,7 @@ const ProductPage : FC<IProps> = (props) => {
           <p className={styles.productDescription}>{state.product?.description}</p>
         </div>
       </div>}
-      <RecentlyViewedProducts id={state.product?.id || 0}/>
+      {state.product && <RecentlyViewedProducts product={state.product}/>}
     </>
   );
 };
