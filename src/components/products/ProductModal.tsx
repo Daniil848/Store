@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const ProductModal : FC<IProps> = (props) => {
-  const state = useAppSelector(state => state.store)
+  const state = useAppSelector(state => state.products)
   const dispatch = useAppDispatch();
 
   useEffect(() => {

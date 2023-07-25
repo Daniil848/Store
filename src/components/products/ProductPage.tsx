@@ -10,7 +10,7 @@ interface IProps {
 };
 
 const ProductPage : FC<IProps> = (props) => {
-  const state = useAppSelector(state => state.store);
+  const state = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
   const {productID} = useParams();
   

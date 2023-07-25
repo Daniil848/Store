@@ -4,7 +4,7 @@ import { getAllCategories,getCategory } from "../../app/productsSlice";
 import styles from "./SideBar.module.scss"
 
 const SideBar : FC = () => {
-  const state = useAppSelector(state => state.store)
+  const state = useAppSelector(state => state.products)
   const dispatch = useAppDispatch();
 
   useEffect(() => {

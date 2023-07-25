@@ -7,14 +7,14 @@ import ProductPage from './components/products/ProductPage';
 import Footer from './components/footer/Footer';
 
 function App() {
-  const state = useAppSelector(state => state.store)
+  const stateProducts = useAppSelector(state => state.products)
 
   return (
     <div className="App">
       <Header/>
       <Routes>
         <Route index element={<Products/>}/>
-        <Route path='/product/:productID' element={<ProductPage id={state?.productId || 0}/>}/>
+        <Route path='/product/:productID' element={<ProductPage id={stateProducts?.productId || 0}/>}/>
       </Routes>
       <Footer/>
     </div>

@@ -9,7 +9,7 @@ import styles from "./Products.module.scss";
 
 
 const Products : FC = () => {
-  const state = useAppSelector(state => state.store)
+  const state = useAppSelector(state => state.products)
   const dispatch = useAppDispatch();
 
   useEffect(() => {

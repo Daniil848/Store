@@ -91,8 +91,8 @@ export const getSpecificCategory = createAsyncThunk<IProduct[], string, {rejectV
 );
 
 
-export const storeSlice = createSlice({
-  name : "store",
+export const productsSlice = createSlice({
+  name : "products",
   initialState,
   reducers : {
     getCategory(state, action) {
@@ -144,6 +144,6 @@ export const storeSlice = createSlice({
   }
 });
 
-export const {getCategory, toggleModal, getProductId, recentlyViewed} = storeSlice.actions;
+export const {getCategory, toggleModal, getProductId, recentlyViewed} = productsSlice.actions;
 
-export default storeSlice.reducer;
+export default productsSlice.reducer;

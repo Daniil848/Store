@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const RecentlyViewedProducts : FC<IProps> = (props) => {
-  const state = useAppSelector(state => state.store)
+  const state = useAppSelector(state => state.products)
   const dispatch = useAppDispatch();
 
   useEffect(() => {
