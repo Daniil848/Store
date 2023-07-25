@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useParams } from 'react-router-dom';
-import { getSingleProduct } from "../../app/storeSlice";
+import { getSingleProduct } from "../../app/productsSlice";
 import RecentlyViewedProducts from "./RecentlyViewedProducts";
 import styles from "./ProductPage.module.scss";
 

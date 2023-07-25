@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useAppDispatch } from "../../app/hooks";
-import { toggleModal, getProductId} from "../../app/storeSlice";
-import { IProduct } from "../../app/storeSlice";
+import { toggleModal, getProductId} from "../../app/productsSlice";
+import { IProduct } from "../../app/productsSlice";
 import { Link } from 'react-router-dom';
 import { faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllCategories,getCategory } from "../../app/storeSlice";
+import { getAllCategories,getCategory } from "../../app/productsSlice";
 import styles from "./SideBar.module.scss"
 
 const SideBar : FC = () => {

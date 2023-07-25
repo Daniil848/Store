@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getSingleProduct, toggleModal } from "../../app/storeSlice";
+import { getSingleProduct, toggleModal } from "../../app/productsSlice";
 import styles from "./ProductModal.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faXmark } from "@fortawesome/free-solid-svg-icons";

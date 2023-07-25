@@ -1,7 +1,7 @@
 import React from "react";
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllProducts, getSpecificCategory } from "../../app/storeSlice";
+import { getAllProducts, getSpecificCategory } from "../../app/productsSlice";
 import Product from "./Product";
 import ProductModal from "./ProductModal";
 import SideBar from "../sideBar/SideBar";

@@ -1,8 +1,8 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { recentlyViewed } from "../../app/storeSlice";
+import { recentlyViewed } from "../../app/productsSlice";
 import { Link } from "react-router-dom";
-import { IProduct } from "../../app/storeSlice";
+import { IProduct } from "../../app/productsSlice";
 import styles from "./RecentlyViewedProducts.module.scss";
 
 interface IProps {
