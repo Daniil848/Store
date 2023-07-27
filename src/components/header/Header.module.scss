@@ -6,7 +6,7 @@
   @apply fixed top-0 z-30 w-full bg-white border-b border-gray-200;
 
   .wrapper {
-    @apply relative flex max-w-6xl w-full h-full mx-auto my-2;
+    @apply relative flex items-center max-w-6xl w-full h-full mx-auto my-2;
 
     .headerLogo {
       @apply bg-[url('../../img/bagpack.svg')] flex items-center w-10 h-10 bg-no-repeat;
@@ -29,8 +29,17 @@
       .headerProfileBasket {
         @apply w-8 h-8 z-30 text-slate-400;
       }
-      .headerProfileUser {
+    }
 
+    .registration {
+      @apply flex;
+
+      .registrationLogIn {
+        @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-1;
+      }
+
+      .registrationSignIn {
+        @apply w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-1 focus:outline-none;
       }
     }
   }

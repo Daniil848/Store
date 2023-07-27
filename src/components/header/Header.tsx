@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -14,11 +15,14 @@ const Header : FC = () => {
           </div>
           <form action="" className={styles.headerSearch}>
             <input type="search" className={styles.headerSearchInput}/>
-            <button className={styles.headerSearchButton}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <button className={styles.headerSearchButton}><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
           </form>
-          <div className={styles.headerProfile}>
+          {/* <div className={styles.headerProfile}>
             <button className={styles.headerProfileBasket}><FontAwesomeIcon icon={faBasketShopping}/></button>
-            <button className={styles.headerProfileUser}></button>
+          </div> */}
+          <div className={styles.registration}>
+            <Link to={'/logIn'} className={styles.registrationLogIn}>Log in</Link>
+            <Link to={'/signIn'} className={styles.registrationSignIn}>Sign in</Link>
           </div>
         </div>
       </header>
