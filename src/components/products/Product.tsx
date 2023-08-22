@@ -26,14 +26,17 @@ const Product : FC<IProduct> = (props) => {
         </div>
         <div className={styles.productInfo}>
           <p className={styles.productInfoTitle}>{props.title}</p>
-          
-          <div className={styles.productInfoBy}>
-            <p className={styles.productInfoPrice}>${props.price}</p>
-            <p className={styles.productInfoRating}>
-              <span className={styles.productInfoRatingRate}>{props.rating.rate}</span>
-              <span className={styles.productInfoRatingImg}><FontAwesomeIcon icon={faStar}/></span>
-            </p>
+          <div className={styles.productInfoBuy}>
+            <div>
+              <p className={styles.productInfoRating}>
+                <span className={styles.productInfoRatingRate}>{props.rating.rate}</span>
+                <span className={styles.productInfoRatingImg}><FontAwesomeIcon icon={faStar}/></span>
+              </p>
+              <p className={styles.productInfoPrice}>${props.price}</p>
+            </div>
+            <button className={styles.productInfoLink}>Buy</button>
           </div>
+          
         </div>
       </Link>
     </>
