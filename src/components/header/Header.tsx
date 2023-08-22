@@ -17,12 +17,12 @@ const Header : FC = () => {
             <input type="search" className={styles.headerSearchInput}/>
             <button className={styles.headerSearchButton}><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
           </form>
-          {/* <div className={styles.headerProfile}>
+          <div className={styles.rightContent}>
             <button className={styles.headerProfileBasket}><FontAwesomeIcon icon={faBasketShopping}/></button>
-          </div> */}
-          <div className={styles.registration}>
-            <Link to={'/logIn'} className={styles.registrationLogIn}>Log in</Link>
-            <Link to={'/signIn'} className={styles.registrationSignIn}>Sign in</Link>
+            <div className={styles.registration}>
+              <Link to={'/logIn'} className={styles.registrationLogIn}>Log in</Link>
+              {/* <Link to={'/signIn'} className={styles.registrationSignIn}>Sign in</Link> */}
+            </div> 
           </div>
         </div>
       </header>
