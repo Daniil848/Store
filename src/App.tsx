@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import Products from './components/products/Products';
 import ProductPage from './components/products/ProductPage';
 import Footer from './components/footer/Footer';
-import LogIn from './components/registration/LogIn';
+import Registration from './components/registration/Registration';
 
 function App() {
   const stateProducts = useAppSelector(state => state.products)
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <LogIn/>
+      <Registration/>
       <Routes>
         <Route index element={<Products/>}/>
         <Route path='/product/:productID' element={<ProductPage id={stateProducts?.productId || 0}/>}/>

@@ -22,7 +22,7 @@ const Header : FC = () => {
           <button className={styles.headerProfileBasket}><FontAwesomeIcon icon={faBasketShopping}/></button>
           <div className={styles.registration}>
             <button className={styles.registrationLogIn} onClick={() => dispatch(toggleLogIn())}>Log in</button>
-            {/* <Link to={'/signIn'} className={styles.registrationSignIn}>Sign in</Link> */}
+            <button className={styles.registrationSignIn} onClick={() => dispatch(toggleSignIn())}>Sign in</button>
           </div> 
         </div>
       </div>
