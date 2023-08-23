@@ -1,12 +1,10 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useAppSelector } from './app/hooks';
 import Header from './components/header/Header';
 import Products from './components/products/Products';
 import ProductPage from './components/products/ProductPage';
-import LogIn from './components/registration/LogIn';
-import SignIn from './components/registration/SignIn';
 import Footer from './components/footer/Footer';
+import LogIn from './components/registration/LogIn';
 
 function App() {
   const stateProducts = useAppSelector(state => state.products)
@@ -14,11 +12,10 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <LogIn/>
       <Routes>
         <Route index element={<Products/>}/>
         <Route path='/product/:productID' element={<ProductPage id={stateProducts?.productId || 0}/>}/>
-        <Route path='/logIn' element={<LogIn/>}/>
-        <Route path='/signIn' element={<SignIn/>}/>
       </Routes>
       <Footer/>
     </div>
