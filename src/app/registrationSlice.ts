@@ -21,21 +21,38 @@ export interface IUser {
     }
   },
   phone : string,
-}
+};
 
 export interface IRegistretionState {
   user : null | IUser,
   allUsers : IUser[],
   logIn : boolean,
   signIn : boolean,
-}
+  loading : boolean,
+  errror : null | boolean,
+};
 
 const initialState : IRegistretionState = {
   user : null, 
   allUsers : [],
   logIn : false,
   signIn : false,
-} 
+  loading : false,
+  errror : null,
+};
+
+export const getAllUsers = createAsyncThunk<IUser[], undefined, {rejectValue: string}>(
+  'registration/getAllUsers',
+  async (_,{rejectWithValue}) => {
+    const response = await fetch('https://fakestoreapi.com/users');
+
+    if (!response.ok) {
+      return rejectWithValue('Server error!');
+    } 
+
+    return response.json();
+  }
+);
 
 export const registrationSlice = createSlice({
   name : "registration",
@@ -58,6 +75,16 @@ export const registrationSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder
+    .addCase(getAllUsers.pending, (state) => {
+      state.loading = true;
+      state.errror = null;
+    })
+    .addCase(getAllUsers.fulfilled, (state, action) => {
+      state.allUsers = action.payload;
+      state.loading = false;
+      state.errror = null;
+    })
   },
 });
 

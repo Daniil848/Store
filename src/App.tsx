@@ -7,12 +7,13 @@ import Footer from './components/footer/Footer';
 import Registration from './components/registration/Registration';
 
 function App() {
-  const stateProducts = useAppSelector(state => state.products)
+  const stateProducts = useAppSelector(state => state.products);
+  const stateRegistration = useAppSelector(state => state.registration);
 
   return (
     <div className="App">
       <Header/>
-      <Registration/>
+      {(stateRegistration.logIn || stateRegistration.signIn) && <Registration/>}
       <Routes>
         <Route index element={<Products/>}/>
         <Route path='/product/:productID' element={<ProductPage id={stateProducts?.productId || 0}/>}/>

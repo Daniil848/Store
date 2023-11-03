@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { IRegistretionState, toggleLogIn, toggleSignIn, switchRegistration,} from "../../app/registrationSlice";
+import { toggleLogIn, toggleSignIn, switchRegistration, getAllUsers} from "../../app/registrationSlice";
 import styles from "./Registration.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Registration = () => {
-  const state : IRegistretionState = useAppSelector(state => state.registration);
+  const state = useAppSelector(state => state.registration);
   const dispatch = useAppDispatch();
 
   const [shouldSwitch, setShouldSwitch] = useState(false);
   const [shouldClose, setShouldClose] = useState(false);
-  const [animate, setAnimate] = useState(styles.animateIn);
+  const [animation, setAnimation] = useState(styles.animateIn);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+  console.log(state.allUsers)
   
   useEffect(() => {
     if (shouldClose) {
@@ -23,12 +29,12 @@ const Registration = () => {
         }
         
         setShouldClose(false);
-        setAnimate(styles.animateIn);
+        setAnimation(styles.animateIn);
       }, 500);
 
       return () => clearTimeout(timer); // Очистка таймера при размонтировании компонента
     }
-  }, [shouldClose,dispatch, state.logIn, state.signIn]);
+  }, [shouldClose, dispatch, state.logIn, state.signIn]);
 
   useEffect(() => {
     if (shouldSwitch) {
@@ -36,24 +42,24 @@ const Registration = () => {
       dispatch(switchRegistration());
 
       setShouldSwitch(false);
-      setAnimate(styles.animateIn);
+      setAnimation(styles.animateIn);
     }
-  },[shouldSwitch, dispatch])
+  },[shouldSwitch, dispatch]);
 
   const handleClose = () => {
     setShouldClose(true);
-    setAnimate(styles.animateOut);
+    setAnimation(styles.animateOut);
   };
 
   const handleSwitch = () => {
     setShouldSwitch(true);
-    setAnimate(styles.animate);
+    setAnimation(styles.animate);
   };
 
   if (state.logIn || state.signIn) {
     return (
       <div className={styles.wrapper}>
-        <div className={animate}>
+        <div className={animation}>
           <div className={styles.form}>
             <button className={styles.formClose} onClick={() => handleClose()}><FontAwesomeIcon icon={faXmark}/></button>
             <div className={styles.formTitles}>
