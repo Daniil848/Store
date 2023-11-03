@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 .sideBar {
-  @apply fixed top-20 left-20 z-20 w-64 h-auto transition-transform -translate-x-full bg-white bg-opacity-80 rounded-md sm:translate-x-0;
+  @apply fixed top-20 left-20 z-20 w-64 h-auto px-3 py-4 rounded-md transition-transform -translate-x-full bg-white bg-opacity-80 sm:translate-x-0;
 
   .wrapper {
-    @apply px-3 py-4 overflow-y-auto;
+    @apply px-3 py-4 overflow-y-auto bg-white rounded-md;
 
     .sideBarTitle {
       @apply text-lg font-medium p-2;
@@ -16,7 +16,7 @@
       @apply space-y-2 font-medium;
 
       .sideBarListItem {
-        @apply flex items-center p-2 w-full text-gray-900 rounded-lg hover:bg-gray-100 hover:bg-opacity-60 focus:bg-gray-100 focus:bg-opacity-60 cursor-pointer;
+        @apply flex items-center p-2 m-1 w-full text-gray-900 rounded-lg hover:bg-blue-500 focus:bg-blue-500 cursor-pointer;
       }
     }
 
