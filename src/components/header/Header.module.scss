@@ -9,13 +9,16 @@
     }
 
     .headerSearch {
-      @apply flex h-8 my-auto rounded-md shadow-sm;
+      @apply flex;
 
+      .headerSearchIcon {
+        @apply absolute top-3 pl-3 text-lg text-slate-500;
+      }
       .headerSearchInput {
-        @apply w-60 py-1 px-2 h-8 bg-blue-200 focus:outline-none shadow-sm rounded-l-md text-sm;
+        @apply block w-96 h-10 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-s-lg bg-gray-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500;
       }
       .headerSearchButton {
-        @apply flex justify-center items-center h-8 w-8 rounded-r-md border border-transparent text-white font-semibold bg-blue-700 hover:bg-blue-600 outline-none focus:ring-2 focus:ring-blue-500 transition-all;
+        @apply px-4 py-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-e-lg text-sm ;
       }
     }
 
@@ -25,20 +28,18 @@
       .headerProfileBasket {
         @apply w-10 h-10 z-30 mr-2 text-blue-700 text-3xl;
       }
-
-      .registration {
-        @apply flex ml-2;
-
-        .registrationLogIn {
-          @apply px-5 py-2.5 font-medium rounded-lg text-sm text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
-        }
-
-        .registrationSignIn {
-          @apply w-fit px-5 py-2.5 ml-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm  focus:outline-none;
-        }
-      }
     }
 
+    .registration {
+      @apply absolute -right-[370px] flex ml-2;
 
+      .registrationLogIn {
+        @apply px-5 py-2.5 font-medium rounded-lg text-sm text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
+      }
+
+      .registrationSignIn {
+        @apply w-fit px-5 py-2.5 ml-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm  focus:outline-none;
+      }
+    }
   }
 }

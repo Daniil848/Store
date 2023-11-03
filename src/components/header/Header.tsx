@@ -14,17 +14,18 @@ const Header : FC = () => {
         <div>
           <div className={styles.headerLogo}></div>
         </div>
-        <form action="" className={styles.headerSearch}>
-          <input type="search" className={styles.headerSearchInput}/>
-          <button className={styles.headerSearchButton}><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
+        <form className={styles.headerSearch}> 
+          <FontAwesomeIcon className={styles.headerSearchIcon} icon={faMagnifyingGlass}/>  
+          <input type="search" id="default-search" className={styles.headerSearchInput} placeholder="Search products" required></input>
+          <button type="submit" className={styles.headerSearchButton}>Search</button>
         </form>
         <div className={styles.rightContent}>
           <button className={styles.headerProfileBasket}><FontAwesomeIcon icon={faBasketShopping}/></button>
-          <div className={styles.registration}>
+        </div>
+        <div className={styles.registration}>
             <button className={styles.registrationLogIn} onClick={() => dispatch(toggleLogIn())}>Log in</button>
             <button className={styles.registrationSignIn} onClick={() => dispatch(toggleSignIn())}>Sign in</button>
-          </div> 
-        </div>
+          </div>
       </div>
     </header>
   )
