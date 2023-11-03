@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export interface IUser {
   id : number,
@@ -44,13 +45,13 @@ const initialState : IRegistretionState = {
 export const getAllUsers = createAsyncThunk<IUser[], undefined, {rejectValue: string}>(
   'registration/getAllUsers',
   async (_,{rejectWithValue}) => {
-    const response = await fetch('https://fakestoreapi.com/users');
-
-    if (!response.ok) {
-      return rejectWithValue('Server error!');
-    } 
-
-    return response.json();
+    try {
+      const {data} = await axios.get('https://fakestoreapi.com/users');
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue("Server error!");
+    };
   }
 );
 

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export interface IProduct {
   id : number,
@@ -41,52 +42,52 @@ const initialState : IState = {
 export const getAllProducts = createAsyncThunk<IProduct[], undefined, {rejectValue: string}>(
   "store/getAllProducts",
   async (_,{rejectWithValue}) => {
-    const response = await fetch('https://fakestoreapi.com/products');
-
-    if (!response.ok) {
-      return rejectWithValue('Server error!');
-    } 
-
-    return response.json();
+    try {
+      const {data} = await axios.get('https://fakestoreapi.com/products');
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue("Server error!");
+    };
   }
 );
 
 export const getSingleProduct = createAsyncThunk<IProduct, number | string, {rejectValue: string}>(
   "store/getSingleProduct",
   async (id : number | string,{rejectWithValue}) => {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-
-    if (!response.ok) {
-      return rejectWithValue('Server error!');
-    } 
-
-    return response.json();
+    try {
+      const {data} = await axios.get(`https://fakestoreapi.com/products/${id}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue("Server error!");
+    };
   }
 );
 
 export const getAllCategories = createAsyncThunk<string[], undefined, {rejectValue: string}>(
   "store/getAllCategories",
   async (_,{rejectWithValue}) => {
-    const response = await fetch('https://fakestoreapi.com/products/categories');
-
-    if (!response.ok) {
-      return rejectWithValue('Server error!');
-    } 
-
-    return response.json();
+    try {
+      const {data} = await axios.get('https://fakestoreapi.com/products/categories');
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue("Server error!");
+    };
   }
 );
 
 export const getSpecificCategory = createAsyncThunk<IProduct[], string, {rejectValue: string}>(
   "store/getSpecificCategory",
   async (category : string, {rejectWithValue}) => {
-    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
-
-    if (!response.ok) {
-      return rejectWithValue('Server error!');
-    } 
-    
-    return response.json();
+    try {
+      const {data} = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue("Server error!");
+    };
   }
 );
 
@@ -100,7 +101,7 @@ export const productsSlice = createSlice({
         state.category = action.payload.category;
       } else {
         state.category = null;
-      } 
+      }
     },
     toggleModal(state) {
       state.modal = !state.modal;
