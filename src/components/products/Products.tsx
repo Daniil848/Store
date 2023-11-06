@@ -18,7 +18,7 @@ const Products : FC = () => {
     } else if (state.category !== null) {
       dispatch(getSpecificCategory(state.category))
     };
-  }, [state.category,dispatch]);
+  }, [state.category, dispatch]);
 
   return (
     <>
@@ -31,7 +31,7 @@ const Products : FC = () => {
             price={item.price}
             category={item.category}
             image={item.image}
-            rating={{rate: item.rating.rate, count: item.rating.count}}
+            rating={{rate : item.rating?.rate, count : item.rating?.count}}
             key={index}
           />
         ))}

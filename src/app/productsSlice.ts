@@ -43,7 +43,7 @@ export const getAllProducts = createAsyncThunk<IProduct[], undefined, {rejectVal
   "store/getAllProducts",
   async (_,{rejectWithValue}) => {
     try {
-      const {data} = await axios.get('https://fakestoreapi.com/products');
+      const {data} = await axios.get('http://localhost:3001/products');
       return data;
     } catch (error) {
       console.log(error);
@@ -56,7 +56,7 @@ export const getSingleProduct = createAsyncThunk<IProduct, number | string, {rej
   "store/getSingleProduct",
   async (id : number | string,{rejectWithValue}) => {
     try {
-      const {data} = await axios.get(`https://fakestoreapi.com/products/${id}`);
+      const {data} = await axios.get(`http://localhost:3001/products/${id}`);
       return data;
     } catch (error) {
       console.log(error);
@@ -69,7 +69,7 @@ export const getAllCategories = createAsyncThunk<string[], undefined, {rejectVal
   "store/getAllCategories",
   async (_,{rejectWithValue}) => {
     try {
-      const {data} = await axios.get('https://fakestoreapi.com/products/categories');
+      const {data} = await axios.get('http://localhost:3001/categories');
       return data;
     } catch (error) {
       console.log(error);
@@ -82,7 +82,8 @@ export const getSpecificCategory = createAsyncThunk<IProduct[], string, {rejectV
   "store/getSpecificCategory",
   async (category : string, {rejectWithValue}) => {
     try {
-      const {data} = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
+      const encodedCategory = encodeURIComponent(category);
+      const {data} = await axios.get(`http://localhost:3001/products/category/${encodedCategory}`);
       return data;
     } catch (error) {
       console.log(error);
