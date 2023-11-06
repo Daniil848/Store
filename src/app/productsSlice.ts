@@ -82,8 +82,7 @@ export const getSpecificCategory = createAsyncThunk<IProduct[], string, {rejectV
   "store/getSpecificCategory",
   async (category : string, {rejectWithValue}) => {
     try {
-      const encodedCategory = encodeURIComponent(category);
-      const {data} = await axios.get(`http://localhost:3001/products/category/${encodedCategory}`);
+      const {data} = await axios.get(`http://localhost:3001/${category}`);
       return data;
     } catch (error) {
       console.log(error);

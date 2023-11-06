@@ -16,12 +16,13 @@ const Products : FC = () => {
     if (state.category === null) {
       dispatch(getAllProducts()); 
     } else if (state.category !== null) {
-      dispatch(getSpecificCategory(state.category))
+      dispatch(getSpecificCategory(state.category));
     };
   }, [state.category, dispatch]);
 
   return (
     <>
+      <SideBar/>
       <div className={styles.products}>
         {state.products.map((item, index) => (
           <Product
@@ -37,7 +38,6 @@ const Products : FC = () => {
         ))}
       </div>
       {state.modal === true && <ProductModal id={state?.productId || 0}/>}
-      <SideBar/>
     </>
   );
 };
