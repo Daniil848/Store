@@ -63,8 +63,10 @@ const Registration = () => {
           <div className={styles.form}>
             <button className={styles.formClose} onClick={() => handleClose()}><FontAwesomeIcon icon={faXmark}/></button>
             <div className={styles.formTitles}>
-              <button className={styles.formTitle} onClick={()=> handleSwitch()}>Log In</button>
-              <button className={styles.formTitle} onClick={()=> handleSwitch()}>Sign In</button>
+              <button className={styles.formTitle} onClick={()=> handleSwitch()}>{state.logIn ? "Log In" : "Sign In"}</button>
+            </div>
+            <div className={styles.inputsWrapper}>
+              <input type="password" placeholder="User name" className={styles.input}/>
             </div>
             <div className={styles.inputsWrapper}>
               <input type="email" placeholder="Email" className={styles.input}/>

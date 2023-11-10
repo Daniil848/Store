@@ -3,25 +3,21 @@
 @tailwind utilities;
 
 .sideBar {
-  @apply fixed top-20 left-20 z-20 w-64 h-auto p-4 rounded-md transition-transform -translate-x-full bg-white bg-opacity-80 sm:translate-x-0;
+  @apply fixed top-20 left-[102px] z-20 w-64 h-auto p-4 rounded-lg transition-transform -translate-x-full bg-white bg-opacity-80 shadow sm:translate-x-0;
 
-  .wrapper {
-    @apply px-3 py-4 overflow-y-auto bg-white rounded-md;
+  .sideBarTitle {
+    @apply text-lg font-medium p-2;
+  }
 
-    .sideBarTitle {
-      @apply text-lg font-medium p-2;
+  .sideBarList {
+    @apply space-y-2 font-medium;
+
+    .sideBarListItem {
+      @apply flex box-border items-center p-2 m-1 w-full text-gray-900 rounded-lg hover:bg-blue-500 focus:bg-blue-500 cursor-pointer;
     }
+  }
 
-    .sideBarList {
-      @apply space-y-2 font-medium;
-
-      .sideBarListItem {
-        @apply flex box-border items-center p-2 m-1 w-full text-gray-900 rounded-lg hover:bg-blue-500 focus:bg-blue-500 cursor-pointer;
-      }
-    }
-
-    .sideBarReset {
-      @apply w-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none;
-    }
+  .sideBarReset {
+    @apply w-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none;
   }
 }

@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 .product {
-  @apply relative w-full max-w-sm p-4 bg-white bg-opacity-80 rounded-lg shadow;
+  @apply relative w-full max-w-sm p-4 bg-white rounded-lg shadow;
 
   .productToggleModal {
     @apply absolute z-10 top-5 right-5 w-5 h-5 text-slate-600;
   }
 
   .productImgContainer {
-    @apply relative h-44 p-2 bg-white rounded-md hover:scale-105 duration-300;
+    @apply relative h-44 p-2 bg-white rounded-md hover:scale-105 duration-300 shadow;
 
     .productImg {
       @apply max-h-40 mx-auto bg-contain;
