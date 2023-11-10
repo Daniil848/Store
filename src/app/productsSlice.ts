@@ -39,12 +39,17 @@ const initialState : IState = {
   error : null,
 };
 
-export const getAllProducts = createAsyncThunk<IProduct[], undefined, {rejectValue: string}>(
+export const getProducts = createAsyncThunk<IProduct[], null | string, {rejectValue: string}>(
   "store/getAllProducts",
-  async (_,{rejectWithValue}) => {
+  async (category : null | string,{rejectWithValue}) => {
     try {
       const {data} = await axios.get('http://localhost:3001/products');
-      return data;
+      const filteredData = data.filter((product: { category: string; }) => product.category === category);
+      if (category === null) {
+        return data;
+      } else {
+        return filteredData;
+      }
     } catch (error) {
       console.log(error);
       return rejectWithValue("Server error!");
@@ -78,21 +83,6 @@ export const getAllCategories = createAsyncThunk<string[], undefined, {rejectVal
   }
 );
 
-export const getSpecificCategory = createAsyncThunk<IProduct[], string, {rejectValue: string}>(
-  "store/getSpecificCategory",
-  async (category : string,{rejectWithValue}) => {
-    try {
-      const {data} = await axios.get(`http://localhost:3001/products`);
-      const filteredData = data.filter((product: { category: string; }) => product.category === category);
-      return filteredData;
-    } catch (error) {
-      console.log(error);
-      return rejectWithValue("Server error!");
-    };
-  }
-);
-
-
 export const productsSlice = createSlice({
   name : "products",
   initialState,
@@ -123,19 +113,16 @@ export const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(getAllProducts.pending, (state) => {
+    .addCase(getProducts.pending, (state) => {
       state.loading = true;
       state.error = null;
     })
-    .addCase(getAllProducts.fulfilled, (state, action) => {
+    .addCase(getProducts.fulfilled, (state, action) => {
       state.products = action.payload;
       state.loading = false;
     })
     .addCase(getAllCategories.fulfilled, (state, action) => {
       state.categories = action.payload;
-    })
-    .addCase(getSpecificCategory.fulfilled, (state, action) => {
-      state.products = action.payload;
     })
     .addCase(getSingleProduct.pending, (state) => {
       state.loading = true;

@@ -1,7 +1,7 @@
 import React from "react";
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllProducts, getSpecificCategory } from "../../app/productsSlice";
+import { getProducts } from "../../app/productsSlice";
 import Product from "./Product";
 import ProductModal from "./ProductModal";
 import SideBar from "../sideBar/SideBar";
@@ -13,11 +13,7 @@ const Products : FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (state.category === null) {
-      dispatch(getAllProducts()); 
-    } else if (state.category !== null) {
-      dispatch(getSpecificCategory(state.category));
-    };
+      dispatch(getProducts(state.category));
   }, [state.category, dispatch]);
 
   return (
