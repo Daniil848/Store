@@ -34,7 +34,7 @@ const Product : FC<IProduct> = (props) => {
               </p>
               <p className={styles.productInfoPrice}>${props.price}</p>
             </div>
-            <button className={styles.productInfoLink}>Buy</button>
+            <button className={styles.productBuy}>Buy</button>
           </div>
           
         </div>

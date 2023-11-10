@@ -23,13 +23,14 @@ const SideBar : FC = () => {
                 <button 
                 className={styles.sideBarListItem}
                 onClick={() => dispatch(setCategory({category}))}
-                >
-                  {category}
-                </button>
+                >{category}</button>
               </li>
             </ul>
           ))}
-          <button onClick={() => dispatch(resetFilter())}>reset filter</button>
+          <button 
+          className={styles.sideBarReset}
+          onClick={() => dispatch(resetFilter())}
+          >reset filter</button>
         </div>
       </aside>
     </>

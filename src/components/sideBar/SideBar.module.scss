@@ -16,13 +16,12 @@
       @apply space-y-2 font-medium;
 
       .sideBarListItem {
-        @apply flex items-center p-2 m-1 w-full text-gray-900 rounded-lg hover:bg-blue-500 focus:bg-blue-500 cursor-pointer;
+        @apply flex box-border items-center p-2 m-1 w-full text-gray-900 rounded-lg hover:bg-blue-500 focus:bg-blue-500 cursor-pointer;
       }
     }
 
-    .sideBarListRange {
-      @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer;
+    .sideBarReset {
+      @apply w-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none;
     }
   }
-
 }
