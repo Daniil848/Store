@@ -8,7 +8,7 @@ export interface IProduct {
   price: number,
   description: string,
   image: string,
-  category: string,
+  category: string | null,
   rating : {
     rate : number,
     count : number,
@@ -80,10 +80,11 @@ export const getAllCategories = createAsyncThunk<string[], undefined, {rejectVal
 
 export const getSpecificCategory = createAsyncThunk<IProduct[], string, {rejectValue: string}>(
   "store/getSpecificCategory",
-  async (category : string, {rejectWithValue}) => {
+  async (category : string,{rejectWithValue}) => {
     try {
-      const {data} = await axios.get(`http://localhost:3001/${category}`);
-      return data;
+      const {data} = await axios.get(`http://localhost:3001/products`);
+      const filteredData = data.filter((product: { category: string; }) => product.category === category);
+      return filteredData;
     } catch (error) {
       console.log(error);
       return rejectWithValue("Server error!");
@@ -96,12 +97,13 @@ export const productsSlice = createSlice({
   name : "products",
   initialState,
   reducers : {
-    getCategory(state, action) {
-      if (state.category === null) {
-        state.category = action.payload.category;
-      } else {
+    setCategory(state, action) {
+      state.category = action.payload.category;
+    },
+    resetFilter(state) {
+      if (state.category !== null) {
         state.category = null;
-      }
+      } 
     },
     toggleModal(state) {
       state.modal = !state.modal;
@@ -145,6 +147,6 @@ export const productsSlice = createSlice({
   }
 });
 
-export const {getCategory, toggleModal, getProductId, recentlyViewed} = productsSlice.actions;
+export const {setCategory, resetFilter, toggleModal, getProductId, recentlyViewed} = productsSlice.actions;
 
 export default productsSlice.reducer;

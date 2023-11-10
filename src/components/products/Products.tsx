@@ -32,7 +32,10 @@ const Products : FC = () => {
             price={item.price}
             category={item.category}
             image={item.image}
-            rating={{rate : item.rating?.rate, count : item.rating?.count}}
+            rating={{
+              rate : item.rating?.rate,
+              count : item.rating?.count
+            }}
             key={index}
           />
         ))}

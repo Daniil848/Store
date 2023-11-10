@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getAllCategories, getCategory } from "../../app/productsSlice";
+import { getAllCategories, resetFilter, setCategory } from "../../app/productsSlice";
 import styles from "./SideBar.module.scss"
 
 const SideBar : FC = () => {
@@ -20,15 +20,17 @@ const SideBar : FC = () => {
           {state.categories.map((category, index) => (
             <ul className={styles.sideBarList} key={index}>
               <li>
-                <button className={styles.sideBarListItem} onClick={() => dispatch(getCategory({category}))}>{category}</button>
+                <button 
+                className={styles.sideBarListItem}
+                onClick={() => dispatch(setCategory({category}))}
+                >
+                  {category}
+                </button>
               </li>
             </ul>
           ))}
+          <button onClick={() => dispatch(resetFilter())}>reset filter</button>
         </div>
-        {/* <div className={styles.wrapper}>
-          <p className={styles.sideBarTitle}>Price:</p>
-          <input type="range" step="0.5"  className={styles.sideBarListRange}/>
-        </div> */}
       </aside>
     </>
   );
