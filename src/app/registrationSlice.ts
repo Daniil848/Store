@@ -4,29 +4,13 @@ import axios from "axios";
 
 export interface IUser {
   id : number,
-  email : string,
-  username : string,
-  password : string,
-  name : {
-    firstname : string,
-    lastname : string,
-  },
-  address : {
-    city : string,
-    street : string,
-    number : number,
-    zipcode : string,
-    geolocation : {
-      lat : string,
-      long : string,
-    }
-  },
-  phone : string,
+  email : string | number,
+  username : string | number,
+  password : string | number,
 };
 
 export interface IRegistretionState {
   user : null | IUser,
-  allUsers : IUser[],
   logIn : boolean,
   signIn : boolean,
   loading : boolean,
@@ -35,18 +19,18 @@ export interface IRegistretionState {
 
 const initialState : IRegistretionState = {
   user : null, 
-  allUsers : [],
   logIn : false,
   signIn : false,
   loading : false,
   errror : null,
 };
 
-export const getAllUsers = createAsyncThunk<IUser[], undefined, {rejectValue: string}>(
-  'registration/getAllUsers',
-  async (_,{rejectWithValue}) => {
+export const signIn = createAsyncThunk<IUser, IUser, {rejectValue: string}>(
+  'registration/signIn',
+  async (payload,{rejectWithValue}) => {
     try {
-      const {data} = await axios.get('https://fakestoreapi.com/users');
+      const {data} = await axios.post(`http://localhost:3001/users`, payload);
+      console.log(data);
       return data;
     } catch (error) {
       console.log(error);
@@ -77,14 +61,8 @@ export const registrationSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(getAllUsers.pending, (state) => {
-      state.loading = true;
-      state.errror = null;
-    })
-    .addCase(getAllUsers.fulfilled, (state, action) => {
-      state.allUsers = action.payload;
-      state.loading = false;
-      state.errror = null;
+    .addCase(signIn.fulfilled,(state, action) => {
+      state.user = action.payload;
     })
   },
 });

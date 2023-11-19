@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { toggleLogIn, toggleSignIn, switchRegistration, getAllUsers} from "../../app/registrationSlice";
+import { toggleLogIn, toggleSignIn, switchRegistration, signIn, IUser} from "../../app/registrationSlice";
 import styles from "./Registration.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -13,11 +13,16 @@ const Registration = () => {
   const [shouldClose, setShouldClose] = useState(false);
   const [animation, setAnimation] = useState(styles.animateIn);
 
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  console.log(state.allUsers)
+  let userDb : IUser = {
+    id : 0,
+    email : userName,
+    username : email,
+    password : password,
+  };
   
   useEffect(() => {
     if (shouldClose) {
@@ -65,19 +70,19 @@ const Registration = () => {
             <div className={styles.formTitles}>
               <button className={styles.formTitle} onClick={()=> handleSwitch()}>{state.logIn ? "Log In" : "Sign In"}</button>
             </div>
+            {state.signIn && <div className={styles.inputsWrapper}>
+              <input type="text" placeholder="User name" onChange={e => setUserName(e.target.value)} className={styles.input}/>
+            </div>}
             <div className={styles.inputsWrapper}>
-              <input type="password" placeholder="User name" className={styles.input}/>
+              <input type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} className={styles.input}/>
             </div>
             <div className={styles.inputsWrapper}>
-              <input type="email" placeholder="Email" className={styles.input}/>
-            </div>
-            <div className={styles.inputsWrapper}>
-              <input type="password" placeholder="Password" className={styles.input}/>
+              <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} className={styles.input}/>
             </div>
             {state.signIn && <div className={styles.inputsWrapper}>
               <input type="password" placeholder="Confirm Password" className={styles.input}/>
             </div>}
-            <button className={styles.button}>OK</button>
+            <button className={styles.button} onClick={() => dispatch(signIn(userDb))}>OK</button>
           </div>
         </div>
       </div>
