@@ -2,14 +2,14 @@
   @apply max-w-6xl h-[315px] mx-auto mt-4 pt-4 pb-7 px-2 bg-white rounded-lg shadow;
 
   .title {
-    @apply max-w-[1120px] m-auto mb-4 p-2 bg-white rounded-lg text-center font-semibold shadow;
+    @apply max-w-[1120px] m-auto mb-4 p-2 bg-white rounded border text-center font-semibold;
   }
 
   .product {
-    @apply flex bg-white rounded-lg shadow mx-2 my-1 p-3;
+    @apply flex bg-white border rounded-lg mx-2 my-1 p-3;
   
     .productImgContainer {
-      @apply flex items-center h-44 w-1/2 mr-2 p-2 bg-white rounded-md shadow-md hover:scale-105 duration-300;
+      @apply flex items-center h-44 w-1/2 mr-2 p-2 bg-white rounded-md hover:scale-105 duration-300;
       
       .productImg {
         @apply max-h-40 m-auto bg-contain;

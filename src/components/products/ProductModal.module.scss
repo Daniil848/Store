@@ -9,14 +9,14 @@
     @apply fixed m-auto max-w-3xl h-fit p-4 box-border bg-white rounded-lg animate-swingIn;
   
     .modalClose {
-      @apply absolute right-3 top-3 w-5 h-5 text-xl text-slate-600;
+      @apply absolute right-[12px] top-[8px] w-5 h-5 text-xl text-slate-600;
     }
 
     .modalBody {
       @apply flex w-full h-max mt-3;
 
       .modalBodyImgContainer {
-        @apply flex justify-center p-3 w-1/2 rounded-lg shadow bg-white;
+        @apply flex justify-center p-3 w-1/2 rounded-lg bg-white;
         
         .modalBodyImg {
           @apply max-w-xs max-h-80 my-auto bg-origin-content;
