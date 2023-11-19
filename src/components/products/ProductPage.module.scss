@@ -34,7 +34,19 @@
           @apply block w-full h-[1px] bg-slate-300 mt-2;
         }
       }
+
+      .productInfoRating {
+        @apply flex bg-slate-100 w-min px-2.5 py-0.5 my-1 rounded;
   
+        .productInfoRatingRate {
+          @apply  text-slate-800 text-base font-semibold;
+        }
+  
+        .productInfoRatingImg {
+          @apply w-4 h-4 ml-1 text-yellow-500;
+        }
+      }
+      
       .productPrice {
         @apply text-center font-bold text-2xl p-2;
       }

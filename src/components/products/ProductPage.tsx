@@ -4,12 +4,14 @@ import { useParams } from 'react-router-dom';
 import { getSingleProduct } from "../../app/productsSlice";
 import RecentlyViewedProducts from "./RecentlyViewedProducts";
 import styles from "./ProductPage.module.scss";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface IProps {
   id : number,
 };
 
-const ProductPage : FC<IProps> = (props) => {
+const ProductPage : FC<IProps> = () => {
   const state = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
   const {productID} = useParams();
@@ -34,6 +36,10 @@ const ProductPage : FC<IProps> = (props) => {
               <p className={styles.productCategory}>{state.product?.category}</p>
               <span className={styles.productLine}></span>
             </div> 
+            <p className={styles.productInfoRating}>
+              <span className={styles.productInfoRatingRate}>{state.product?.rating.rate}</span>
+              <span className={styles.productInfoRatingImg}><FontAwesomeIcon icon={faStar}/></span>
+            </p>
             <p className={styles.productPrice}>{state.product?.price} $</p>
             <button className={styles.productButton}>Add to card</button>
           </div>
