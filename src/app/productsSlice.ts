@@ -44,7 +44,9 @@ export const getProducts = createAsyncThunk<IProduct[], null | string, {rejectVa
   async (category : null | string,{rejectWithValue}) => {
     try {
       const {data} = await axios.get('http://localhost:3001/products');
+
       const filteredData = data.filter((product: { category: string; }) => product.category === category);
+
       if (category === null) {
         return data;
       } else {
